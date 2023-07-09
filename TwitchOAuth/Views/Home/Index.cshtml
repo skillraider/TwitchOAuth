@@ -1,0 +1,17 @@
+﻿@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>Home</h1>
+@if (string.IsNullOrEmpty(Model.TwitchUsername))
+{
+    <a href="https://id.twitch.tv/oauth2/authorize?client_id=@Model.ClientId&redirect_uri=@Model.RedirectUrl&response_type=code&scope=@Model.Scope">Connect to Twitch</a>
+}
+else
+{
+    <div>
+        Hello, @Model.TwitchUsername!
+        <a asp-controller="Home" asp-action="Signout">Signout</a>
+    </div>
+}
